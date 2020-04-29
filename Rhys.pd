@@ -1,24 +1,24 @@
-#N canvas 552 89 817 379 10;
+#N canvas 321 267 817 379 10;
 #X declare -lib Gem;
 #N canvas 0 50 614 349 (subpatch) 0;
 #X array no1 100 float 3;
-#A 0 1.61278e-06 3.22557e-06 4.83835e-06 6.45113e-06 8.06392e-06 9.6767e-06
-1.12895e-05 1.29023e-05 1.4515e-05 1.61278e-05 1.77406e-05 1.93534e-05
-2.09662e-05 2.2579e-05 2.41918e-05 2.58045e-05 2.74173e-05 2.90301e-05
-3.06429e-05 3.22557e-05 3.38685e-05 3.54812e-05 3.7094e-05 3.87068e-05
-4.03196e-05 4.19324e-05 4.35452e-05 4.51579e-05 4.67707e-05 4.83835e-05
-4.99963e-05 5.16091e-05 5.32219e-05 5.48346e-05 5.64474e-05 5.80602e-05
-5.9673e-05 6.12858e-05 6.28986e-05 6.45113e-05 6.61241e-05 6.77369e-05
-6.93497e-05 7.09625e-05 7.25753e-05 7.4188e-05 7.58008e-05 7.74136e-05
-7.90264e-05 8.06392e-05 8.2252e-05 8.38647e-05 8.54775e-05 8.70903e-05
-8.87031e-05 9.03159e-05 9.19287e-05 9.35414e-05 9.51542e-05 9.6767e-05
-9.83798e-05 9.99926e-05 0.000101605 0.000103218 0.000104831 0.000106444
-0.000108056 0.000109669 0.000111282 0.000112895 0.000114508 0.00011612
-0.000117733 0.000119346 0.000120959 0.000122572 0.000124184 0.000125797
-0.00012741 0.000129023 0.000130635 0.000132248 0.000133861 0.000135474
-0.000137087 0.000138699 0.000140312 0.000141925 0.000143538 0.000145151
-0.000146763 0.000148376 0.000149989 0.000151602 0.000153214 0.000154827
-0.00015644 0.000158053 0.000159666 0.000161278;
+#A 0 4.09309e-06 8.18618e-06 1.22793e-05 1.63724e-05 2.04655e-05 2.45586e-05
+2.86516e-05 3.27447e-05 3.68378e-05 4.09309e-05 4.5024e-05 4.91171e-05
+5.32102e-05 5.73033e-05 6.13964e-05 6.54895e-05 6.95826e-05 7.36757e-05
+7.77688e-05 8.18619e-05 8.5955e-05 9.00481e-05 9.41411e-05 9.82342e-05
+0.000102327 0.00010642 0.000110514 0.000114607 0.0001187 0.000122793
+0.000126886 0.000130979 0.000135072 0.000139165 0.000143258 0.000147351
+0.000151444 0.000155538 0.000159631 0.000163724 0.000167817 0.00017191
+0.000176003 0.000180096 0.000184189 0.000188282 0.000192375 0.000196468
+0.000200562 0.000204655 0.000208748 0.000212841 0.000216934 0.000221027
+0.00022512 0.000229213 0.000233306 0.000237399 0.000241492 0.000245586
+0.000249679 0.000253772 0.000257865 0.000261958 0.000266051 0.000270144
+0.000274237 0.00027833 0.000282423 0.000286517 0.00029061 0.000294703
+0.000298796 0.000302889 0.000306982 0.000311075 0.000315168 0.000319261
+0.000323354 0.000327447 0.000331541 0.000335634 0.000339727 0.00034382
+0.000347913 0.000352006 0.000356099 0.000360192 0.000364285 0.000368378
+0.000372471 0.000376565 0.000380658 0.000384751 0.000388844 0.000392937
+0.00039703 0.000401123 0.000405216 0.000409309;
 #X coords 0 349 1 348 200 140 0;
 #X restore 347 14 graph;
 #N canvas 673 506 181 269 env 0;
@@ -227,10 +227,10 @@
 #X restore 52 83 pd noterand;
 #X obj 37 132 tgl 30 0 empty empty Drone 35 7 0 10 -99865 -228856 -1
 0 1;
-#N canvas 772 198 450 526 drone 0;
+#N canvas 113 231 450 526 drone 0;
 #X obj 25 19 inlet;
 #X obj 32 401 *~;
-#X obj 32 438 dac~;
+#X obj 32 481 dac~;
 #X floatatom 289 101 5 0 0 0 - - -;
 #X obj 115 164 sig~;
 #X obj 289 58 random 127;
@@ -241,7 +241,6 @@
 #X obj 217 277 *~ 0.76;
 #X obj 67 289 osc~;
 #X obj 67 263 *~ 0.5;
-#X obj 26 113 vline~;
 #X msg 26 92 \$1 10000;
 #X obj 115 211 lop~ 0.15;
 #X obj 117 353 lop.bw~ 440 4;
@@ -258,44 +257,48 @@
 #X floatatom 356 128 5 0 0 0 - - -;
 #X obj 115 186 *~;
 #X obj 95 458 s~ gemdrone;
-#X obj 259 409 env~;
-#X obj 259 433 s gemdrone;
 #X obj 289 80 cyclone/scale 0 127 30 60;
-#X connect 0 0 14 0;
-#X connect 0 0 18 0;
+#X obj 259 433 s gemdrone;
+#X obj 259 373 env~;
+#X obj 26 113 line;
+#X obj 259 404 *;
+#X connect 0 0 13 0;
+#X connect 0 0 17 0;
+#X connect 1 0 16 0;
+#X connect 1 0 27 0;
 #X connect 1 0 2 0;
 #X connect 1 0 2 1;
-#X connect 1 0 17 0;
-#X connect 1 0 28 0;
-#X connect 1 0 29 0;
-#X connect 3 0 24 0;
-#X connect 4 0 27 0;
-#X connect 5 0 31 0;
+#X connect 3 0 23 0;
+#X connect 4 0 26 0;
+#X connect 5 0 28 0;
 #X connect 6 0 10 0;
-#X connect 6 0 19 0;
+#X connect 6 0 18 0;
 #X connect 6 0 7 0;
 #X connect 6 0 12 0;
+#X connect 6 0 30 0;
 #X connect 7 0 8 0;
-#X connect 8 0 16 0;
+#X connect 8 0 15 0;
 #X connect 9 0 8 1;
 #X connect 10 0 9 0;
 #X connect 11 0 1 1;
 #X connect 12 0 11 0;
-#X connect 13 0 1 0;
-#X connect 14 0 13 0;
-#X connect 15 0 6 0;
-#X connect 16 0 1 1;
-#X connect 18 0 5 0;
-#X connect 20 0 21 0;
-#X connect 21 0 4 0;
-#X connect 22 0 10 1;
-#X connect 23 0 24 1;
-#X connect 23 0 26 0;
-#X connect 24 0 21 0;
-#X connect 25 0 27 1;
-#X connect 27 0 15 0;
-#X connect 29 0 30 0;
-#X connect 31 0 3 0;
+#X connect 13 0 31 0;
+#X connect 14 0 6 0;
+#X connect 15 0 1 1;
+#X connect 17 0 5 0;
+#X connect 19 0 20 0;
+#X connect 20 0 4 0;
+#X connect 21 0 10 1;
+#X connect 22 0 23 1;
+#X connect 22 0 25 0;
+#X connect 23 0 20 0;
+#X connect 24 0 26 1;
+#X connect 26 0 14 0;
+#X connect 28 0 3 0;
+#X connect 30 0 32 1;
+#X connect 31 0 1 0;
+#X connect 31 0 32 0;
+#X connect 32 0 29 0;
 #X restore 37 167 pd drone;
 #X obj 657 176 lop~ 600;
 #X text 622 8 Old Schtuff;
@@ -360,7 +363,7 @@
 #X connect 25 0 8 1;
 #X connect 26 0 27 0;
 #X restore 37 233 pd noise;
-#X obj 37 196 tgl 30 0 empty empty Noise 35 7 0 10 -45076 -228856 -1
+#X obj 36 196 tgl 30 0 empty empty Noise 35 7 0 10 -45076 -228856 -1
 0 1;
 #N canvas 461 114 243 255 net 0;
 #X obj 69 189 s notenet;
@@ -408,36 +411,71 @@
 #X text 415 14 TCP Connection to Ryan;
 #X obj 622 251 *~ 0.5;
 #X obj 37 16 r notetrig;
-#N canvas 302 115 712 588 gem 0;
+#N canvas 248 82 712 588 gem 0;
 #X msg 18 16 create \, 1;
 #X msg 37 40 0 \, destroy;
 #X obj 523 23 declare -lib Gem;
 #X obj 129 74 gemhead;
-#X obj 130 316 pix_texture;
+#X obj 130 352 pix_texture;
 #X obj 18 65 gemwin;
-#X obj 130 187 pix_sig2pix~ 64 64;
 #X obj 46 313 block~ 4096;
 #X obj 299 57 r gemnoise;
-#X obj 197 45 r gemdrone;
-#X obj 129 390 square 3;
-#X obj 299 78 * 2;
-#X msg 190 288 quality 0;
-#X obj 197 87 sig~;
-#X obj 197 108 *~ 0.2;
+#X floatatom 221 222 5 0 0 0 - - -;
+#X obj 202 41 r gemdrone;
+#X obj 202 82 osc~;
+#X obj 299 78 phasor~;
+#X obj 76 119 osc~;
+#X obj 76 140 *~ 0.35;
+#X obj 76 98 r note2;
+#X obj 131 262 rotateXYZ;
+#X obj 299 99 *~ 3.21;
+#X obj 136 315 pix_kaleidoscope, f 23;
+#X obj 128 391 sphere 6 50;
+#X msg 45 345 quality 1;
+#X obj 130 187 pix_sig2pix~ 64 64;
+#X obj 202 62 * 8;
+#X obj 482 1 r percnum;
+#X floatatom 513 122 5 0 0 0 - - -;
+#X floatatom 519 156 5 0 0 0 - - -;
+#X floatatom 492 49 5 0 0 0 - - -;
+#X obj 468 178 translateXYZ;
+#X obj 513 99 line;
+#X msg 513 75 -7 0 \, 6 300;
+#X obj 482 22 cyclone/scale 1 12 -4 4;
+#X obj 440 88 * 0.2;
+#X obj 469 303 cube;
 #X connect 0 0 5 0;
 #X connect 1 0 5 0;
-#X connect 3 0 6 0;
-#X connect 4 0 10 0;
-#X connect 6 0 4 0;
-#X connect 8 0 11 0;
-#X connect 9 0 13 0;
-#X connect 11 0 6 2;
-#X connect 12 0 4 0;
-#X connect 13 0 14 0;
-#X connect 14 0 6 1;
+#X connect 3 0 20 0;
+#X connect 3 0 26 0;
+#X connect 4 0 18 0;
+#X connect 7 0 11 0;
+#X connect 8 0 15 1;
+#X connect 9 0 21 0;
+#X connect 10 0 20 1;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 13 0 20 0;
+#X connect 14 0 12 0;
+#X connect 15 0 17 0;
+#X connect 16 0 20 2;
+#X connect 17 0 4 0;
+#X connect 19 0 4 0;
+#X connect 20 0 15 0;
+#X connect 21 0 10 0;
+#X connect 22 0 29 0;
+#X connect 23 0 26 2;
+#X connect 24 0 26 3;
+#X connect 25 0 26 1;
+#X connect 25 0 28 0;
+#X connect 25 0 30 0;
+#X connect 26 0 31 0;
+#X connect 27 0 23 0;
+#X connect 28 0 27 0;
+#X connect 29 0 25 0;
+#X connect 30 0 24 0;
 #X restore 254 15 pd gem;
 #X text 195 15 Graphics;
-#X obj 529 224 s~ note;
 #X obj 349 266 meter;
 #X floatatom 349 287 5 0 0 0 - - -;
 #X obj 615 312 dac~;
@@ -476,7 +514,7 @@
 #X connect 13 0 14 0;
 #X connect 14 0 12 1;
 #X restore 250 138 pd kik;
-#N canvas 165 409 450 300 perc 0;
+#N canvas 55 492 450 300 perc 0;
 #X obj 26 13 inlet;
 #X obj 28 213 *~;
 #X obj 28 241 dac~;
@@ -499,11 +537,13 @@
 #X floatatom 289 240 5 0 0 0 - - -;
 #X obj 244 199 hip~ 500;
 #X obj 161 243 s~ reverb5;
+#X obj 89 152 s percnum;
 #X connect 0 0 1 0;
 #X connect 0 0 14 0;
 #X connect 1 0 2 0;
 #X connect 1 0 2 1;
 #X connect 3 0 12 0;
+#X connect 3 0 22 0;
 #X connect 4 0 20 0;
 #X connect 5 0 4 0;
 #X connect 6 0 5 0;
@@ -558,6 +598,8 @@
 #X connect 11 0 10 0;
 #X connect 12 0 7 1;
 #X restore 420 144 pd snr;
+#X obj 533 273 s note2;
+#X obj 541 246 env~;
 #X connect 2 0 1 0;
 #X connect 2 0 13 0;
 #X connect 7 0 12 0;
@@ -565,14 +607,15 @@
 #X connect 9 0 16 0;
 #X connect 12 0 11 0;
 #X connect 12 0 22 0;
-#X connect 12 0 26 0;
+#X connect 12 0 36 0;
 #X connect 14 0 15 0;
 #X connect 16 0 12 1;
 #X connect 19 0 18 0;
-#X connect 22 0 29 0;
-#X connect 22 0 29 1;
+#X connect 22 0 28 0;
+#X connect 22 0 28 1;
 #X connect 23 0 2 0;
-#X connect 27 0 28 0;
-#X connect 30 0 31 0;
-#X connect 33 0 32 0;
-#X connect 34 0 35 0;
+#X connect 26 0 27 0;
+#X connect 29 0 30 0;
+#X connect 32 0 31 0;
+#X connect 33 0 34 0;
+#X connect 36 0 35 0;
