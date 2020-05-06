@@ -1,4 +1,4 @@
-#N canvas 53 428 817 368 10;
+#N canvas 256 289 817 368 10;
 #X declare -lib Gem;
 #N canvas 0 50 614 349 (subpatch) 0;
 #X array no1 100 float 3;
@@ -18,7 +18,7 @@
 0.00894989 0.00895404 0.00895818 0.00896233 0.00896648 0.00897063 0.00897477
 0.00897892 0.00898307 0.00898722;
 #X coords 0 349 1 348 200 140 0;
-#X restore 347 14 graph;
+#X restore 347 13 graph;
 #N canvas 673 506 181 269 env 0;
 #X obj 26 35 t b b;
 #X obj 26 225 tabwrite~ no1;
@@ -72,7 +72,7 @@
 #X restore 38 105 pd env;
 #X obj 38 43 bng 30 250 50 0 empty empty PlayNote 40 7 0 10 -260097
 -99865 -1;
-#X text 318 15 Env;
+#X text 321 13 Env;
 #N canvas 564 154 263 431 reverb 0;
 #X obj 12 10 r~ reverb;
 #X obj 74 386 dac~;
@@ -114,7 +114,7 @@
 #X connect 16 0 3 0;
 #X connect 17 0 18 0;
 #X connect 18 0 6 1;
-#X restore 26 306 pd reverb;
+#X restore 427 337 pd reverb;
 #N canvas 333 475 308 192 noterand 0;
 #X obj 39 24 inlet;
 #X obj 39 70 random 1000;
@@ -134,7 +134,7 @@
 #X restore 52 83 pd noterand;
 #X obj 37 132 tgl 30 0 empty empty Drone 35 7 0 10 -99865 -228856 -1
 0 1;
-#N canvas 380 69 450 648 drone 0;
+#N canvas 772 126 450 648 drone 0;
 #X obj 21 69 inlet;
 #X obj 28 451 *~;
 #X floatatom 285 151 5 0 0 0 - - -;
@@ -158,7 +158,7 @@
 #X obj 328 151 r TCPon?;
 #X obj 284 176 spigot 0;
 #X obj 196 237 hsl 128 15 1 1.75 1 1 empty empty Pressure_Sensor 6
--8 0 10 -261682 -1 -1 0 1;
+-8 0 10 -261682 -1 -1 12700 1;
 #X floatatom 352 178 5 0 0 0 - - -;
 #X obj 111 236 *~;
 #X obj 224 536 s~ gemdrone;
@@ -254,7 +254,7 @@
 #X connect 52 0 44 1;
 #X connect 53 0 14 1;
 #X restore 38 167 pd drone;
-#N canvas 324 409 450 407 noise 0;
+#N canvas 376 260 450 407 noise 0;
 #X obj 31 19 inlet;
 #X obj 136 8 r~ freq;
 #X floatatom 141 78 5 0 0 0 - - -;
@@ -322,7 +322,7 @@
 #X restore 37 233 pd noise;
 #X obj 36 196 tgl 30 0 empty empty Noise 35 7 0 10 -45076 -228856 -1
 0 1;
-#N canvas 912 36 468 490 net 1;
+#N canvas 909 67 468 490 net 0;
 #X obj 19 37 unpackOSC;
 #X floatatom 112 38 5 0 0 0 - - -;
 #X obj 19 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -361,12 +361,14 @@
 #X floatatom 102 126 5 0 0 0 - - -;
 #X floatatom 185 125 5 0 0 0 - - -;
 #X floatatom 269 125 5 0 0 0 - - -;
-#X msg 192 413 disconnect;
+#X msg 192 386 disconnect;
 #X obj 155 253 r pluckoct;
 #X msg 155 274 send /pluckoct \$1;
 #X obj 352 138 sel 1;
 #X msg 327 283 send /drumon \$1;
 #X obj 327 262 r kickon;
+#X obj 139 405 r init;
+#X obj 139 426 delay 3000;
 #X connect 0 0 16 0;
 #X connect 1 0 4 0;
 #X connect 2 0 3 0;
@@ -395,9 +397,11 @@
 #X connect 27 0 20 0;
 #X connect 28 0 6 0;
 #X connect 29 0 28 0;
+#X connect 30 0 31 0;
+#X connect 31 0 14 0;
 #X restore 553 14 pd net;
 #X text 415 14 TCP Connection to Ryan;
-#X obj 37 16 r notetrig;
+#X obj 38 12 r notetrig;
 #N canvas 672 87 712 706 gem 0;
 #X msg 21 47 create \, 1;
 #X msg 41 71 0 \, destroy;
@@ -554,12 +558,12 @@
 #X connect 71 0 51 0;
 #X connect 72 0 53 0;
 #X connect 73 0 53 2;
-#X restore 254 15 pd gem;
-#X text 197 15 Graphics;
-#X obj 36 259 meter;
-#X floatatom 36 280 5 0 0 0 - - -;
-#X obj 643 154 tgl 30 0 empty empty Drums 35 7 0 10 -257985 -66577
--1 0 1;
+#X restore 254 13 pd gem;
+#X text 197 13 Graphics;
+#X obj 32 305 meter;
+#X floatatom 32 326 5 0 0 0 - - -;
+#X obj 656 301 tgl 30 0 empty empty Kick 35 7 0 10 -257985 -66577 -1
+0 1;
 #N canvas 198 123 601 587 kik 0;
 #X obj 29 283 inlet;
 #X floatatom 155 356 5 0 0 0 - - -;
@@ -655,7 +659,7 @@
 #X connect 41 0 40 0;
 #X connect 42 0 40 0;
 #X connect 44 0 19 0;
-#X restore 643 190 pd kik;
+#X restore 656 337 pd kik;
 #N canvas 736 109 704 612 perc 0;
 #X obj 49 123 inlet;
 #X floatatom 173 288 5 0 0 0 - - -;
@@ -759,12 +763,12 @@
 #X connect 46 0 40 0;
 #X connect 47 0 46 0;
 #X connect 48 0 39 0;
-#X restore 574 191 pd perc;
-#X obj 574 155 tgl 30 0 empty percon Perc 35 7 0 10 -4032 -66577 -1
+#X restore 587 338 pd perc;
+#X obj 587 302 tgl 30 0 empty percon Perc 35 7 0 10 -4032 -66577 -1
 0 1;
-#X obj 720 156 tgl 30 0 empty empty Snares 35 7 0 10 -260097 -66577
+#X obj 733 303 tgl 30 0 empty empty Snares 35 7 0 10 -260097 -66577
 -1 0 1;
-#N canvas 423 145 631 517 snr 0;
+#N canvas 692 186 631 517 snr 0;
 #X obj 31 106 inlet;
 #X obj 242 275 else/player~;
 #X msg 316 221 speed \$1;
@@ -775,7 +779,6 @@
 #X obj 92 512 lfnoise 1 0 94;
 #X msg 150 225 open samples/SNR/\$1.wav;
 #X obj 150 183 + 1;
-#X obj 150 162 random 5;
 #X obj 92 533 cyclone/scale 0 127 75 500;
 #X obj 338 369 s~ reverb4;
 #X obj 242 319 *~;
@@ -791,35 +794,36 @@
 #X obj 130 32 metro 2000;
 #X obj 242 361 s~ snrmix;
 #X obj 236 90 * 2;
+#X obj 150 162 random 8;
 #X connect 0 0 6 0;
-#X connect 0 0 23 0;
-#X connect 1 0 15 0;
+#X connect 0 0 22 0;
+#X connect 1 0 14 0;
 #X connect 2 0 1 0;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 6 0 4 0;
-#X connect 6 0 10 0;
-#X connect 7 0 11 0;
+#X connect 6 0 25 0;
+#X connect 7 0 10 0;
 #X connect 8 0 1 0;
 #X connect 9 0 8 0;
-#X connect 10 0 9 0;
-#X connect 10 0 16 0;
-#X connect 13 0 17 0;
-#X connect 14 0 13 1;
-#X connect 15 0 13 0;
-#X connect 15 0 12 0;
-#X connect 17 0 24 0;
-#X connect 18 0 22 0;
-#X connect 19 0 25 0;
-#X connect 20 0 19 0;
-#X connect 21 0 22 1;
-#X connect 22 0 6 1;
-#X connect 23 0 20 0;
-#X connect 25 0 21 0;
-#X restore 720 191 pd snr;
-#X obj 643 85 tgl 15 0 empty drumon empty 17 7 0 10 -262144 -1 -1 0
-1;
-#N canvas 934 190 440 422 arduino 0;
+#X connect 12 0 16 0;
+#X connect 13 0 12 1;
+#X connect 14 0 12 0;
+#X connect 14 0 11 0;
+#X connect 16 0 23 0;
+#X connect 17 0 21 0;
+#X connect 18 0 24 0;
+#X connect 19 0 18 0;
+#X connect 20 0 21 1;
+#X connect 21 0 6 1;
+#X connect 22 0 19 0;
+#X connect 24 0 20 0;
+#X connect 25 0 9 0;
+#X connect 25 0 15 0;
+#X restore 733 338 pd snr;
+#X obj 656 232 tgl 15 0 empty drumon empty 17 7 0 10 -262144 -1 -1
+0 1;
+#N canvas 753 190 440 422 arduino 0;
 #X obj 74 143 arduino;
 #X obj 74 164 route digital analog;
 #X obj 74 185 route 2;
@@ -847,6 +851,8 @@
 #X floatatom 12 213 5 0 0 0 - - -;
 #X obj 12 233 s pluckoct;
 #X msg 52 11 open 6;
+#X obj 198 15 r init;
+#X obj 198 36 delay 2000;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 0 22 0;
@@ -874,6 +880,9 @@
 #X connect 22 0 23 0;
 #X connect 23 0 24 0;
 #X connect 25 0 0 0;
+#X connect 26 0 25 0;
+#X connect 26 0 27 0;
+#X connect 27 0 10 0;
 #X restore 727 14 pd arduino;
 #N canvas 344 114 614 672 mixer 0;
 #X obj 48 186 mix4~;
@@ -919,7 +928,7 @@
 #X connect 15 0 0 2;
 #X connect 16 0 14 0;
 #X connect 17 0 14 1;
-#X restore 341 318 pd mixer;
+#X restore 499 337 pd mixer;
 #N canvas 667 60 242 235 note 0;
 #X obj 114 26 catch~ env;
 #X obj 131 55 r note;
@@ -963,8 +972,8 @@
 #X connect 5 0 4 1;
 #X connect 7 0 6 0;
 #X connect 8 0 9 0;
-#X restore 126 112 pd note;
-#N canvas 251 189 535 234 transition 0;
+#X restore 123 12 pd note;
+#N canvas 740 142 535 234 transition 0;
 #X obj 58 25 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 95 69 s spd;
@@ -1035,116 +1044,47 @@
 #X obj 396 198 tgl 15 1 acidsend empty Acid_Send 17 7 0 10 -262130
 -1 -1 0 1;
 #X obj 211 61 s speedup;
-#X obj 162 146 counter 14;
 #X obj 395 132 loadbang;
 #X obj 268 151 *~ 0.25;
 #X obj 471 148 s drumon;
+#X obj 162 146 counter 28;
 #X connect 0 0 1 0;
 #X connect 0 0 2 0;
 #X connect 0 0 12 0;
 #X connect 0 0 18 0;
-#X connect 4 0 19 2;
+#X connect 4 0 22 2;
 #X connect 6 0 8 0;
 #X connect 7 0 15 0;
 #X connect 7 0 17 0;
 #X connect 8 1 7 0;
 #X connect 8 1 0 0;
 #X connect 9 0 17 0;
-#X connect 9 0 22 0;
+#X connect 9 0 21 0;
 #X connect 12 0 2 0;
 #X connect 12 0 3 0;
-#X connect 12 0 19 0;
+#X connect 12 0 22 0;
 #X connect 14 0 0 0;
 #X connect 15 0 10 0;
-#X connect 15 0 21 0;
+#X connect 15 0 20 0;
 #X connect 15 2 9 0;
 #X connect 16 0 15 0;
-#X connect 19 0 5 0;
-#X connect 19 2 6 0;
-#X connect 21 0 11 0;
-#X connect 21 0 11 1;
-#X restore 197 312 pd transition;
-#X obj 724 295 tgl 30 0 empty acidon Acid 35 7 0 10 -204786 -66577
--1 0 1;
-#N canvas 725 312 450 300 acid1 0;
-#X obj 37 37 inlet;
-#X obj 37 104 metro;
-#N canvas 706 92 465 415 acid2 0;
-#X obj 37 10 inlet;
-#X obj 169 345 dac~;
-#X obj 21 232 vline~;
-#X msg 21 206 1 50 \, 0 100 200;
-#X obj 360 33 sel 0 1 2 3 4;
-#X msg 362 147 1;
-#X msg 391 103 0.5;
-#X msg 420 58 0.33;
-#X obj 184 166 else/player~ samples/bass.wav;
-#X obj 108 65 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 206 139 speed \$1;
-#X floatatom 275 124 5 0 0 0 - - -;
-#X obj 263 9 rand.i 0 4;
-#X obj 275 103 * 230;
-#X obj 227 239 s~ reverb7;
-#X obj 182 186 *~ 0.05;
-#X msg 406 81 0.35;
-#X msg 377 125 0.65;
-#X connect 0 0 3 0;
-#X connect 0 0 9 0;
-#X connect 3 0 2 0;
-#X connect 4 0 5 0;
-#X connect 4 1 17 0;
-#X connect 4 2 6 0;
-#X connect 4 3 16 0;
-#X connect 4 4 7 0;
-#X connect 5 0 13 0;
-#X connect 6 0 13 0;
-#X connect 7 0 13 0;
-#X connect 8 0 15 0;
-#X connect 9 0 8 0;
-#X connect 9 0 12 0;
-#X connect 10 0 8 0;
-#X connect 12 0 4 0;
-#X connect 13 0 10 0;
-#X connect 13 0 11 0;
-#X connect 15 0 1 0;
-#X connect 15 0 1 1;
-#X connect 15 0 14 0;
-#X connect 16 0 13 0;
-#X connect 17 0 13 0;
-#X restore 37 145 pd acid2;
-#X obj 196 101 r kiktempo;
-#X obj 252 153 + 1;
-#X obj 251 132 random 2;
-#X floatatom 252 195 5 0 0 0 - - -;
-#X obj 219 198 *;
-#X obj 252 174 * 0.25;
-#X obj 219 219 * 2;
-#X obj 271 92 metro 200;
-#X msg 140 104 500;
-#X connect 0 0 1 0;
-#X connect 0 0 10 0;
-#X connect 1 0 2 0;
-#X connect 3 0 7 0;
-#X connect 4 0 8 0;
-#X connect 5 0 4 0;
-#X connect 6 0 7 1;
-#X connect 7 0 9 0;
-#X connect 8 0 6 0;
-#X connect 9 0 1 1;
-#X connect 10 0 5 0;
-#X connect 11 0 7 0;
-#X restore 724 330 pd acid1;
-#X obj 197 275 tgl 30 0 speedup drumon Transition 35 7 0 10 -228856
+#X connect 20 0 11 0;
+#X connect 20 0 11 1;
+#X connect 22 0 5 0;
+#X connect 22 2 6 0;
+#X restore 711 163 pd transition;
+#X obj 711 126 tgl 30 0 speedup drumon Transition 35 7 0 10 -228856
 -66577 -1 0 1;
-#X obj 324 85 delay 500 2000 msec;
-#X obj 197 232 r transtrig;
-#X obj 197 253 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 711 83 r transtrig;
+#X obj 711 104 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 360 103 delay 500 2250 msec;
 #X text 613 15 Arduino Connection;
-#X obj 703 111 s kickon;
-#X text 359 205 yuppa up harp;
+#X obj 716 258 s kickon;
+#X text 69 326 CPU Usage;
+#X text 332 113 ~ GOD BLESS HARP LAGER ~;
+#X obj 372 151 bng 50 250 50 0 init empty INITIALISE 60 25 0 20 -232576
+-45076 -1;
+#X text 188 336 RIP Florian Schneider :(;
 #X connect 2 0 1 0;
 #X connect 2 0 5 0;
 #X connect 6 0 7 0;
@@ -1157,8 +1097,7 @@
 #X connect 23 0 20 0;
 #X connect 23 0 17 0;
 #X connect 23 0 21 0;
-#X connect 23 0 36 0;
-#X connect 28 0 29 0;
-#X connect 30 0 27 0;
-#X connect 32 0 33 0;
-#X connect 33 0 30 0;
+#X connect 23 0 32 0;
+#X connect 28 0 27 0;
+#X connect 29 0 30 0;
+#X connect 30 0 28 0;
