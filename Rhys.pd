@@ -1,4 +1,4 @@
-#N canvas 256 289 817 368 10;
+#N canvas 479 276 817 368 10;
 #X declare -lib Gem;
 #N canvas 0 50 614 349 (subpatch) 0;
 #X array no1 100 float 3;
@@ -884,7 +884,7 @@
 #X connect 26 0 27 0;
 #X connect 27 0 10 0;
 #X restore 727 14 pd arduino;
-#N canvas 344 114 614 672 mixer 0;
+#N canvas 722 88 614 672 mixer 0;
 #X obj 48 186 mix4~;
 #X obj 270 196 mix2~;
 #X obj 171 418 +~;
@@ -903,6 +903,10 @@
 #X obj 92 61 r~ kickmix;
 #X obj 249 594 *~ 2, f 5;
 #X obj 328 591 *~ 2;
+#X obj 270 20 r init;
+#X msg 215 102 gain1 0.75 \, gain2 1 \, gain3 1 \, gain4 1;
+#X msg 334 59 gain1 0.8 \, gain2 0.8 \, pan1 -100 \, pan2 100;
+#X msg 459 48 gain1 0.7 \, gain2 0.7 \, pan1 -100 \, pan2 100;
 #X connect 0 0 2 0;
 #X connect 0 0 11 0;
 #X connect 0 0 13 0;
@@ -928,6 +932,12 @@
 #X connect 15 0 0 2;
 #X connect 16 0 14 0;
 #X connect 17 0 14 1;
+#X connect 18 0 19 0;
+#X connect 18 0 20 0;
+#X connect 18 0 21 0;
+#X connect 19 0 0 4;
+#X connect 20 0 1 2;
+#X connect 21 0 3 2;
 #X restore 499 337 pd mixer;
 #N canvas 667 60 242 235 note 0;
 #X obj 114 26 catch~ env;
