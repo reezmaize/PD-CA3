@@ -1,22 +1,22 @@
-#N canvas 479 276 817 368 10;
+#N canvas 215 244 817 368 10;
 #X declare -lib Gem;
 #N canvas 0 50 614 349 (subpatch) 0;
 #X array no1 100 float 3;
-#A 0 0.00857658 0.00858073 0.00858488 0.00858902 0.00859317 0.00859732
-0.00860147 0.00860562 0.00860976 0.00861391 0.00861806 0.00862221 0.00862635
-0.0086305 0.00863465 0.0086388 0.00864295 0.00864709 0.00865124 0.00865539
-0.00865954 0.00866369 0.00866783 0.00867198 0.00867613 0.00868028 0.00868442
-0.00868857 0.00869272 0.00869687 0.00870102 0.00870516 0.00870931 0.00871346
-0.00871761 0.00872175 0.0087259 0.00873005 0.0087342 0.00873835 0.00874249
-0.00874664 0.00875079 0.00875494 0.00875909 0.00876323 0.00876738 0.00877153
-0.00877568 0.00877983 0.00878397 0.00878812 0.00879227 0.00879642 0.00880056
-0.00880471 0.00880886 0.00881301 0.00881716 0.0088213 0.00882545 0.0088296
-0.00883375 0.0088379 0.00884204 0.00884619 0.00885034 0.00885449 0.00885863
-0.00886278 0.00886693 0.00887108 0.00887523 0.00887937 0.00888352 0.00888767
-0.00889182 0.00889597 0.00890011 0.00890426 0.00890841 0.00891256 0.0089167
-0.00892085 0.008925 0.00892915 0.0089333 0.00893744 0.00894159 0.00894574
-0.00894989 0.00895404 0.00895818 0.00896233 0.00896648 0.00897063 0.00897477
-0.00897892 0.00898307 0.00898722;
+#A 0 0.00931112 0.00931337 0.00931562 0.00931787 0.00932012 0.00932237
+0.00932462 0.00932688 0.00932913 0.00933138 0.00933363 0.00933588 0.00933813
+0.00934038 0.00934263 0.00934488 0.00934713 0.00934938 0.00935164 0.00935389
+0.00935614 0.00935839 0.00936064 0.00936289 0.00936514 0.00936739 0.00936964
+0.00937189 0.00937415 0.0093764 0.00937865 0.0093809 0.00938315 0.0093854
+0.00938765 0.0093899 0.00939215 0.0093944 0.00939665 0.00939891 0.00940116
+0.00940341 0.00940566 0.00940791 0.00941016 0.00941241 0.00941466 0.00941691
+0.00941916 0.00942142 0.00942367 0.00942592 0.00942817 0.00943042 0.00943267
+0.00943492 0.00943717 0.00943942 0.00944167 0.00944392 0.00944618 0.00944843
+0.00945068 0.00945293 0.00945518 0.00945743 0.00945968 0.00946193 0.00946418
+0.00946643 0.00946869 0.00947094 0.00947319 0.00947544 0.00947769 0.00947994
+0.00948219 0.00948444 0.00948669 0.00948894 0.0094912 0.00949345 0.0094957
+0.00949795 0.0095002 0.00950245 0.0095047 0.00950695 0.0095092 0.00951145
+0.00951371 0.00951596 0.00951821 0.00952046 0.00952271 0.00952496 0.00952721
+0.00952946 0.00953171 0.00953396;
 #X coords 0 349 1 348 200 140 0;
 #X restore 347 13 graph;
 #N canvas 673 506 181 269 env 0;
@@ -88,7 +88,6 @@
 #X obj 35 321 *~;
 #X obj 70 296 r~ sidechain;
 #X obj 135 12 r~ reverb6;
-#X obj 192 159 r~ reverb7;
 #X obj 170 202 r~ reverb8;
 #X obj 169 223 *~ 2;
 #X obj 185 280 r revtime;
@@ -109,11 +108,10 @@
 #X connect 10 0 3 3;
 #X connect 11 0 6 0;
 #X connect 13 0 3 2;
-#X connect 14 0 3 1;
-#X connect 15 0 16 0;
-#X connect 16 0 3 0;
-#X connect 17 0 18 0;
-#X connect 18 0 6 1;
+#X connect 14 0 15 0;
+#X connect 15 0 3 0;
+#X connect 16 0 17 0;
+#X connect 17 0 6 1;
 #X restore 427 337 pd reverb;
 #N canvas 333 475 308 192 noterand 0;
 #X obj 39 24 inlet;
@@ -158,7 +156,7 @@
 #X obj 328 151 r TCPon?;
 #X obj 284 176 spigot 0;
 #X obj 196 237 hsl 128 15 1 1.75 1 1 empty empty Pressure_Sensor 6
--8 0 10 -261682 -1 -1 12700 1;
+-8 0 10 -261682 -1 -1 0 1;
 #X floatatom 352 178 5 0 0 0 - - -;
 #X obj 111 236 *~;
 #X obj 224 536 s~ gemdrone;
@@ -479,6 +477,8 @@
 #X msg 488 416 1 0 \, 0 450;
 #X obj 306 561 alpha 1;
 #X obj 452 535 rand.i 3 7;
+#X obj 209 419 r init;
+#X obj 156 16 r init;
 #X connect 0 0 5 0;
 #X connect 1 0 5 0;
 #X connect 3 0 20 0;
@@ -558,6 +558,10 @@
 #X connect 71 0 51 0;
 #X connect 72 0 53 0;
 #X connect 73 0 53 2;
+#X connect 74 0 32 0;
+#X connect 74 0 52 0;
+#X connect 74 0 70 0;
+#X connect 75 0 0 0;
 #X restore 254 13 pd gem;
 #X text 197 13 Graphics;
 #X obj 32 305 meter;
@@ -660,7 +664,7 @@
 #X connect 42 0 40 0;
 #X connect 44 0 19 0;
 #X restore 656 337 pd kik;
-#N canvas 736 109 704 612 perc 0;
+#N canvas 632 135 704 612 perc 0;
 #X obj 49 123 inlet;
 #X floatatom 173 288 5 0 0 0 - - -;
 #X obj 266 359 else/player~;
@@ -674,7 +678,7 @@
 #X obj 22 18 lfnoise 2 0 78;
 #X obj 174 225 metro 50;
 #X obj 22 39 cyclone/scale 0 127 50 200;
-#X obj 253 513 pan2~;
+#X obj 253 555 pan2~;
 #X obj 290 412 random 100;
 #X obj 291 442 cyclone/scale 0 100 -1 1;
 #X floatatom 291 463 5 0 0 0 - - -;
@@ -705,12 +709,14 @@
 #X obj 219 198 *;
 #X obj 371 25 metro 500;
 #X obj 92 258 s perctime;
-#X obj 196 561 s~ percmixL;
-#X obj 293 553 s~ percmixR;
+#X obj 196 586 s~ percmixL;
+#X obj 293 578 s~ percmixR;
 #X obj 163 135 r spd;
 #X msg 163 156 250;
 #X obj 151 114 r drumon;
 #X obj 252 174 * 0.25;
+#X obj 290 494 r drumfilt;
+#X obj 253 520 lowpass~ \$1 25;
 #X connect 0 0 11 0;
 #X connect 0 0 41 0;
 #X connect 1 0 9 0;
@@ -733,7 +739,7 @@
 #X connect 15 0 16 0;
 #X connect 16 0 13 1;
 #X connect 17 0 34 0;
-#X connect 19 0 13 0;
+#X connect 19 0 50 0;
 #X connect 20 0 31 0;
 #X connect 21 0 22 0;
 #X connect 21 1 23 0;
@@ -763,6 +769,8 @@
 #X connect 46 0 40 0;
 #X connect 47 0 46 0;
 #X connect 48 0 39 0;
+#X connect 49 0 50 1;
+#X connect 50 0 13 0;
 #X restore 587 338 pd perc;
 #X obj 587 302 tgl 30 0 empty percon Perc 35 7 0 10 -4032 -66577 -1
 0 1;
@@ -822,8 +830,8 @@
 #X connect 25 0 15 0;
 #X restore 733 338 pd snr;
 #X obj 656 232 tgl 15 0 empty drumon empty 17 7 0 10 -262144 -1 -1
-0 1;
-#N canvas 753 190 440 422 arduino 0;
+1 1;
+#N canvas 960 67 440 422 arduino 0;
 #X obj 74 143 arduino;
 #X obj 74 164 route digital analog;
 #X obj 74 185 route 2;
@@ -850,9 +858,9 @@
 #X obj 12 192 route 3;
 #X floatatom 12 213 5 0 0 0 - - -;
 #X obj 12 233 s pluckoct;
-#X msg 52 11 open 6;
 #X obj 198 15 r init;
 #X obj 198 36 delay 2000;
+#X msg 52 11 open 5;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 0 22 0;
@@ -879,10 +887,10 @@
 #X connect 21 0 0 0;
 #X connect 22 0 23 0;
 #X connect 23 0 24 0;
-#X connect 25 0 0 0;
-#X connect 26 0 25 0;
-#X connect 26 0 27 0;
-#X connect 27 0 10 0;
+#X connect 25 0 27 0;
+#X connect 25 0 26 0;
+#X connect 26 0 10 0;
+#X connect 27 0 0 0;
 #X restore 727 14 pd arduino;
 #N canvas 722 88 614 672 mixer 0;
 #X obj 48 186 mix4~;
@@ -1002,52 +1010,6 @@
 #X obj 305 127 s~ reverb6;
 #X obj 268 172 dac~;
 #X obj 76 92 metro 400;
-#N canvas 860 185 465 369 acid1 0;
-#X obj 37 10 inlet;
-#X obj 169 345 dac~;
-#X obj 21 232 vline~;
-#X msg 21 206 1 50 \, 0 100 200;
-#X obj 67 106 line;
-#X obj 360 33 sel 0 1 2 3 4;
-#X msg 362 147 1;
-#X msg 377 125 0.75;
-#X msg 391 103 0.5;
-#X msg 406 81 0.25;
-#X msg 420 58 0.33;
-#X obj 184 166 else/player~ samples/bass.wav;
-#X obj 109 65 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 310 65 *;
-#X msg 206 100 speed \$1;
-#X msg 65 83 250 50 0 100 100;
-#X obj 183 282 bandpass~ 0 1;
-#X obj 183 187 *~ 0.1;
-#X obj 206 79 rand.f 200 400;
-#X connect 0 0 3 0;
-#X connect 0 0 15 0;
-#X connect 0 0 12 0;
-#X connect 0 0 18 0;
-#X connect 3 0 2 0;
-#X connect 4 0 16 1;
-#X connect 5 0 6 0;
-#X connect 5 1 7 0;
-#X connect 5 2 8 0;
-#X connect 5 3 9 0;
-#X connect 5 4 10 0;
-#X connect 6 0 13 1;
-#X connect 7 0 13 1;
-#X connect 8 0 13 1;
-#X connect 9 0 13 1;
-#X connect 10 0 13 1;
-#X connect 11 0 17 0;
-#X connect 12 0 11 0;
-#X connect 14 0 11 0;
-#X connect 15 0 4 0;
-#X connect 16 0 1 0;
-#X connect 16 0 1 1;
-#X connect 17 0 16 0;
-#X connect 18 0 14 0;
-#X restore 87 162 pd acid1;
 #X obj 136 30 inlet;
 #X obj 269 101 else/player~ samples/aphexacid.wav;
 #X msg 318 31 speed 120;
@@ -1061,27 +1023,27 @@
 #X connect 0 0 1 0;
 #X connect 0 0 2 0;
 #X connect 0 0 12 0;
-#X connect 0 0 18 0;
-#X connect 4 0 22 2;
+#X connect 0 0 17 0;
+#X connect 4 0 21 2;
 #X connect 6 0 8 0;
-#X connect 7 0 15 0;
-#X connect 7 0 17 0;
+#X connect 7 0 14 0;
+#X connect 7 0 16 0;
 #X connect 8 1 7 0;
 #X connect 8 1 0 0;
-#X connect 9 0 17 0;
-#X connect 9 0 21 0;
+#X connect 9 0 16 0;
+#X connect 9 0 20 0;
 #X connect 12 0 2 0;
 #X connect 12 0 3 0;
-#X connect 12 0 22 0;
-#X connect 14 0 0 0;
-#X connect 15 0 10 0;
-#X connect 15 0 20 0;
-#X connect 15 2 9 0;
-#X connect 16 0 15 0;
-#X connect 20 0 11 0;
-#X connect 20 0 11 1;
-#X connect 22 0 5 0;
-#X connect 22 2 6 0;
+#X connect 12 0 21 0;
+#X connect 13 0 0 0;
+#X connect 14 0 10 0;
+#X connect 14 0 19 0;
+#X connect 14 2 9 0;
+#X connect 15 0 14 0;
+#X connect 19 0 11 0;
+#X connect 19 0 11 1;
+#X connect 21 0 5 0;
+#X connect 21 2 6 0;
 #X restore 711 163 pd transition;
 #X obj 711 126 tgl 30 0 speedup drumon Transition 35 7 0 10 -228856
 -66577 -1 0 1;
